@@ -1,0 +1,948 @@
+/* ==========================================================
+   PORTOFOLIO RISKA
+   Bootstrap 5.3.3 + Get Waves.io SVG
+   Versi per-slide (menu bisa diklik)
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --blue: #236f9f;
+  --blue-dark: #1e638e;
+  --sky: #80c9f1;
+  --pale: #eaf7ff;
+  --ink: #286f9d;
+  --pink: #ed4dbd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 78px;
+}
+
+body {
+  margin: 0;
+  background: #193f52;
+  color: var(--ink);
+  font-family: 'Poppins', sans-serif;
+}
+
+.site-shell {
+  max-width: 1440px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(145deg, #f8fcff 0%, #c5e7fa 45%, #72c5ef 100%);
+  border: 2px solid #1685c7;
+}
+
+.site-shell::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: 290px;
+  height: 290px;
+  right: -105px;
+  top: -75px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f7c7ed, #eb3fb4);
+  opacity: .78;
+  box-shadow: -28px 34px 0 -8px rgba(240, 92, 194, .3);
+  pointer-events: none;
+}
+
+.site-header {
+  min-height: 68px;
+  padding: 13px 3%;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+  z-index: 5;
+}
+
+.brand {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: var(--blue);
+  text-decoration: none;
+  margin-right: auto;
+}
+
+.navbar-nav {
+  gap: 10px;
+}
+
+.nav-link {
+  color: #3b78a0;
+  font-family: Georgia, serif;
+  font-size: .83rem;
+  padding: 7px 8px !important;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #164c74;
+  text-decoration: underline;
+  text-underline-offset: 7px;
+}
+
+/* Menu yang sedang aktif (slide yang tampil) */
+.navbar-nav .nav-link.active {
+  color: #164c74;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--pink);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 7px;
+}
+
+.notification {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: #e8c6e5;
+  color: #a18ba8;
+  display: grid;
+  place-items: center;
+  font-size: 17px;
+  position: relative;
+}
+
+.notification::after {
+  content: "";
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  width: 5px;
+  height: 5px;
+  background: #f04cae;
+  border-radius: 50%;
+}
+
+section {
+  position: relative;
+  z-index: 1;
+}
+
+.section-pad {
+  padding: 34px 3%;
+}
+
+/* ==========================================================
+   SISTEM SLIDE
+   ========================================================== */
+.slides {
+  position: relative;
+  z-index: 1;
+  min-height: 480px;
+}
+
+/* Slide yang tidak aktif disembunyikan */
+.slides > .slide:not(.active) {
+  display: none !important;
+}
+
+/* Animasi muncul saat slide berganti */
+.slides > .slide.active {
+  animation: slideIn .45s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tombol sebelumnya / berikutnya + titik */
+.slide-pager {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 10px 3% 26px;
+}
+
+.pager-btn {
+  border: 0;
+  border-radius: 30px;
+  padding: 9px 20px;
+  background: var(--blue);
+  color: #fff;
+  font: .85rem Georgia, serif;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.pager-btn:hover:not(:disabled) {
+  background: #164f76;
+  transform: translateY(-1px);
+}
+
+.pager-btn:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.pager-dots {
+  display: flex;
+  gap: 9px;
+}
+
+.pager-dot {
+  width: 11px;
+  height: 11px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #9bcfff;
+  transition: all .25s ease;
+}
+
+.pager-dot:hover {
+  background: #5fa6d8;
+}
+
+.pager-dot.active {
+  width: 28px;
+  border-radius: 10px;
+  background: var(--pink);
+}
+
+/* BERANDA */
+.hero {
+  min-height: 340px;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.hero-copy {
+  max-width: 560px;
+  padding: 10px 0 22px;
+}
+
+.eyebrow {
+  font-size: 1.08rem;
+  font-weight: 500;
+  margin: 0 0 3px;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--blue);
+}
+
+.hero h1,
+.section-heading h2,
+.about .section-heading h2,
+.contact-details h2 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 900;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  margin: 0 0 4px;
+}
+
+.hero h2 {
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  font-weight: 600;
+  margin-bottom: 13px;
+}
+
+.intro {
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  line-height: 2;
+  max-width: 520px;
+  color: #3e79a2;
+}
+
+.btn-main {
+  background: var(--blue);
+  color: white;
+  border: 0;
+  border-radius: 16px;
+  padding: 11px 19px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  min-width: 190px;
+  font-family: Georgia, serif;
+  font-size: 1rem;
+}
+
+.btn-main:hover {
+  background: #164f76;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-main span {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.portrait-ring {
+  width: min(100%, 330px);
+  aspect-ratio: .82;
+  border: 1.5px solid #6fa9d7;
+  border-radius: 48% 48% 44% 44%;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(160deg, rgba(255,255,255,.42), rgba(130,201,241,.25));
+}
+
+/* FOTO PERTAMA: POSISI LEBIH KE TENGAH */
+.portrait-ring img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  position: relative;
+  z-index: 1;
+}
+
+.ring-text {
+  position: absolute;
+  top: 10px;
+  z-index: 2;
+  font-weight: 700;
+  letter-spacing: .5px;
+  transform: rotate(-12deg);
+}
+
+/* INFORMASI SINGKAT */
+.quick-info {
+  min-height: 130px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: rgba(221, 240, 255, .6);
+  padding: 18px 3%;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 4px;
+  padding: 8px 15px;
+}
+
+.info-item + .info-item {
+  border-left: 1px solid rgba(64, 123, 161, .3);
+}
+
+.info-icon {
+  font-size: 2rem;
+  color: #728ba1;
+  line-height: 1;
+}
+
+.info-item strong,
+.skill-card h3 {
+  font-family: 'DM Serif Display', Georgia, serif;
+}
+
+.info-item small {
+  font-family: Georgia, serif;
+  font-size: .85rem;
+}
+
+/* TENTANG SAYA */
+.about {
+  padding-top: 50px;
+  padding-bottom: 55px;
+}
+
+.section-heading {
+  margin-bottom: 22px;
+}
+
+.section-heading h2 {
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  margin: 4px 0 6px;
+}
+
+.section-heading > p:last-child {
+  font-family: Georgia, serif;
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.body-copy {
+  font-family: Georgia, serif;
+  line-height: 2;
+  text-align: center;
+  margin: 0 0 18px;
+}
+
+.profile-facts {
+  border-radius: 18px;
+  background: rgba(255,255,255,.82);
+  padding: 12px 18px;
+}
+
+.profile-facts div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 0;
+  border-bottom: 1px solid #83b6d7;
+  color: #246b99;
+}
+
+.profile-facts div:last-child {
+  border-bottom: 0;
+}
+
+.profile-facts span {
+  width: 24px;
+  color: #a7b8c2;
+  font-size: 1.25rem;
+}
+
+.profile-facts strong {
+  font-size: .95rem;
+  font-weight: 600;
+}
+
+.download-btn {
+  border-radius: 30px;
+  padding: 12px 30px;
+  margin: 18px auto 0;
+  display: block;
+  width: fit-content;
+  font-weight: 600;
+  box-shadow: 0 4px 14px #74b8dc22;
+}
+
+.about-quote {
+  position: relative;
+  min-height: 340px;
+  display: grid;
+  place-items: center;
+}
+
+.about-portrait {
+  height: 330px;
+  width: 245px;
+  border: 2px solid #7caee0;
+  border-radius: 46% 46% 25% 25%;
+  overflow: hidden;
+  background: #dcefff;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.about-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.quote {
+  position: absolute;
+  z-index: 2;
+  padding: 10px 14px;
+  border-radius: 40%;
+  background: #b4d5ff;
+  color: #315a93;
+  font-size: .9rem;
+  font-style: italic;
+  font-weight: 600;
+  transform: rotate(-8deg);
+}
+
+.quote-left {
+  left: 0;
+  top: 16%;
+}
+
+.quote-right {
+  right: 0;
+  top: 25%;
+  transform: rotate(8deg);
+}
+
+/* KETERAMPILAN */
+.skills {
+  padding-top: 48px;
+  padding-bottom: 55px;
+}
+
+.skill-row {
+  margin-top: 12px;
+}
+
+.skill-card {
+  min-height: 145px;
+  height: 100%;
+  border-radius: 19px;
+  background: linear-gradient(115deg, rgba(255,255,255,.92), rgba(143,199,255,.8));
+  padding: 15px 12px;
+  text-align: center;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px #2a75a51b;
+}
+
+.skill-emoji {
+  width: 55px;
+  height: 40px;
+  margin: -7px auto 4px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 1px 3px #0005;
+  box-shadow: inset 0 0 10px #fff7;
+}
+
+.word {
+  background: linear-gradient(135deg,#1746a2,#6cbcff);
+}
+
+.excel {
+  background: linear-gradient(135deg,#08794c,#8be4a4);
+}
+
+.ppt {
+  background: linear-gradient(135deg,#b73515,#ffb06b);
+}
+
+.google {
+  background: linear-gradient(135deg,#3c75c9,#ffd56d);
+}
+
+.comm {
+  background: linear-gradient(135deg,#344c83,#7ec6ff);
+}
+
+.admin {
+  background: linear-gradient(135deg,#214d91,#9fcaff);
+}
+
+.skill-card h3 {
+  font-size: 1.1rem;
+  margin: 4px 0;
+}
+
+.skill-card p {
+  font: .82rem/1.65 Georgia, serif;
+  margin: 0;
+}
+
+/* PORTOFOLIO */
+.portfolio {
+  padding-top: 48px;
+  padding-bottom: 55px;
+}
+
+.portfolio-row {
+  margin-top: 8px;
+}
+
+.project-card {
+  height: 100%;
+  min-height: 345px;
+  padding: 14px;
+  border-radius: 20px;
+  background: linear-gradient(130deg, rgba(255,255,255,.95), rgba(144,200,255,.85));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.project-preview {
+  height: 118px;
+  width: 100%;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.preview-one {
+  background: linear-gradient(140deg,#f7fcff,#abd8ff);
+  color: #3b81b4;
+}
+
+.preview-one span,
+.preview-three span {
+  border: 1px solid #7db7e3;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: #ffffffa8;
+}
+
+.preview-two {
+  background: linear-gradient(140deg,#e6f5ff,#a2ceff);
+}
+
+.app-icon {
+  background: #7056cc;
+  border-radius: 12px;
+  padding: 12px 17px;
+  font-size: 1.8rem;
+}
+
+.app-window {
+  background: #fff;
+  color: #4283b5;
+  border-radius: 10px;
+  padding: 15px 20px;
+  font-size: 2rem;
+}
+
+.preview-three {
+  background: linear-gradient(140deg,#effaff,#a6d5ff);
+  color: #377eaf;
+}
+
+.tag {
+  align-self: flex-start;
+  background: #9bcfff;
+  color: #477eaa;
+  border-radius: 22px;
+  padding: 8px 16px;
+  font: .78rem Georgia, serif;
+  margin-bottom: 10px;
+}
+
+.project-card h3 {
+  font: 600 1rem Georgia, serif;
+  margin: 2px 0 8px;
+}
+
+.project-card p {
+  font: .84rem/1.8 Georgia, serif;
+  flex: 1;
+}
+
+.detail-link {
+  align-self: flex-start;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-radius: 30px;
+  padding: 9px 17px;
+  background: #f5f4f8;
+  color: #222;
+  text-decoration: none;
+  font: .88rem Georgia, serif;
+  min-width: 150px;
+}
+
+.detail-link:hover {
+  background: #d6eaff;
+  color: #174f7b;
+}
+
+/* KONTAK */
+.contact {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 50px;
+  align-items: center;
+  padding-top: 42px;
+  padding-bottom: 65px;
+}
+
+.contact-details h2 {
+  font-size: clamp(2rem, 3.5vw, 2.7rem);
+  margin: 8px 0;
+}
+
+.contact-details > p:not(.eyebrow) {
+  font: .95rem/2 Georgia, serif;
+}
+
+.contact-line {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 13px 5px;
+  border-bottom: 1px solid #92bad1;
+}
+
+.contact-line > span {
+  width: 28px;
+  font-size: 1.6rem;
+  color: #8c9eaa;
+}
+
+.contact-line strong {
+  font: 600 .95rem Georgia, serif;
+}
+
+.contact-line p {
+  font: .88rem Georgia, serif;
+  margin: 6px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.contact-form-wrap {
+  padding: 25px;
+  border-radius: 20px;
+  background: linear-gradient(110deg, #eaf6ff, #8fc7ff);
+}
+
+.contact-form-wrap h2 {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+}
+
+.contact-form-wrap .form-control {
+  border: 0;
+  border-radius: 16px;
+  padding: 14px 17px;
+  margin-bottom: 14px;
+  min-height: 50px;
+  font-family: Georgia, serif;
+  font-size: 1.05rem;
+}
+
+.contact-form-wrap textarea.form-control {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.contact-form-wrap .btn {
+  display: flex;
+  width: fit-content;
+  margin: 8px auto 0;
+  min-width: 205px;
+}
+
+.form-message {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: .8rem;
+}
+
+.thanks {
+  position: absolute;
+  right: 2%;
+  bottom: 12px;
+  font: 700 1.25rem 'DM Serif Display', Georgia, serif;
+  transform: rotate(-18deg);
+}
+
+/* GET WAVES.IO: GELOMBANG SVG */
+.wave-decoration {
+  width: 100%;
+  height: 32px;
+  overflow: hidden;
+  line-height: 0;
+  background: #72c5ef;
+  position: relative;
+  z-index: 1;
+}
+
+.wave-decoration svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* FOOTER */
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 14px 10px;
+  background: #d6edff;
+  color: #467fa5;
+  font-size: .8rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* RESPONSIVE / MOBILE */
+@media (max-width: 767.98px) {
+  .site-header {
+    height: auto;
+    min-height: 65px;
+    flex-wrap: wrap;
+  }
+
+  .site-header nav {
+    order: 4;
+    width: 100%;
+  }
+
+  .site-header .navbar-collapse {
+    background: #e9f7ffed;
+    border-radius: 12px;
+    padding: 8px;
+  }
+
+  .navbar-nav {
+    gap: 0;
+  }
+
+  .notification {
+    order: 3;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: 24px;
+  }
+
+  .hero-copy {
+    margin: auto;
+  }
+
+  .hero-visual {
+    min-height: 280px;
+  }
+
+  .portrait-ring {
+    width: 245px;
+  }
+
+  .quick-info {
+    grid-template-columns: 1fr;
+  }
+
+  .info-item + .info-item {
+    border-left: 0;
+    border-top: 1px solid #91bad2;
+  }
+
+  .about-grid,
+  .contact {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .about-quote {
+    order: -1;
+    min-height: 300px;
+  }
+
+  .about-portrait {
+    width: 210px;
+    height: 290px;
+  }
+
+  .quote-left {
+    left: 5%;
+  }
+
+  .quote-right {
+    right: 5%;
+  }
+
+  .section-pad {
+    padding: 30px 5%;
+  }
+
+  .contact {
+    padding-bottom: 75px;
+  }
+
+  .thanks {
+    font-size: 1rem;
+  }
+
+  .slide-pager {
+    gap: 10px;
+    padding: 8px 4% 22px;
+  }
+
+  .pager-btn {
+    padding: 8px 12px;
+    font-size: .75rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand {
+    font-size: 1.1rem;
+  }
+
+  .skill-card {
+    min-height: 165px;
+  }
+
+  .skill-card h3 {
+    font-size: .95rem;
+  }
+
+  .skill-card p {
+    font-size: .76rem;
+  }
+
+  .profile-facts strong {
+    font-size: .78rem;
+  }
+
+  .contact-form-wrap {
+    padding: 18px;
+  }
+
+  .pager-dots {
+    gap: 6px;
+  }
+}
+
+
+
